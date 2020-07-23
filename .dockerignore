@@ -1,0 +1,6 @@
+.git
+JmeterTest.jmx
+PostmanTest.json
+k8s
+node_modules
+npm-debug

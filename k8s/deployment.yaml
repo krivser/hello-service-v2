@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-service-app
+  template:
+    metadata:
+      labels:
+        app: hello-service-app
+    spec:
+      containers:
+      - name: hello-service
+        image: svkrivonos/hello-service:1.1
+        envFrom:
+        - configMapRef:
+            name: hello-config
+        - secretRef:
+            name: hello-secret
+        ports:
+        - name: web
+          containerPort: 8080
+        # livenessProbe:
+          # httpGet:
+            # path: /health
+            # port: 8080
+          # initialDelaySeconds: 10
+          # periodSeconds : 5
+          # timeoutSeconds : 2
+        # readinessProbe :
+          # httpGet :
+            # port : 8080
+            # path : /health
+          # initialDelaySeconds : 10
+          # periodSeconds : 5

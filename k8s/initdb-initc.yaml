@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "initdb"
+spec:
+  # POD
+  template:
+    metadata:
+      name: "initdb"
+    spec:
+      restartPolicy: Never
+      initContainers:
+        - name: check-db-ready
+          image: postgres:12.3
+          env:
+            - name: POSTGRES_HOST
+              value: "postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+          command:
+            - sh
+            - "-c"
+            - |
+              until pg_isready -h $POSTGRES_HOST  -p  $POSTGRES_PORT;
+              do echo waiting for database; sleep 2; done;
+      containers:
+      - name: post-install-job
+        env:
+          - name: DATABASE_URI
+            value: "postgresql://myuser:passwd@postgres:5432/myapp"
+        image: postgres:12.3
+        command:
+          - sh
+          - "-c"
+          - |
+            psql $DATABASE_URI <<'EOF'
+              CREATE SEQUENCE client_id_seq;
+              CREATE TABLE client (id bigint primary key not null DEFAULT nextval('client_id_seq'), name varchar);
+              ALTER SEQUENCE client_id_seq OWNED BY client.id;
+            EOF
+  backoffLimit: 2

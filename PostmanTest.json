@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "d6c9935e-7348-4e06-b350-4b98686d4ad6",
+		"name": "HomeWork2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/health",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "config_db",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/config",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get clients",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de611ab4-b71b-4547-83ee-3cf2452bf9fa",
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)\r",
+							"pm.collectionVariables.set(\"userId\", responseJSON[\"userId\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Сергей\"}"
+				},
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get clients by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update client by id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Вася\"}"
+				},
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get clients by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete client by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get clients",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/otusapp/svkrivonos/clients",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"otusapp",
+						"svkrivonos",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "83fdf926-42ea-4742-a5df-adcec5d36d35",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "35864e9a-68f9-4dd0-bee9-e4b7d2cf577c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "556362b7-55df-487b-8f2f-e4a998aee5fb",
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"id": "9ad285cf-9a6e-4b06-a73e-ab4a932adb50",
+			"key": "host",
+			"value": "arch.homework"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
