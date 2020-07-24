@@ -1,6 +1,8 @@
 .git
 JmeterTest.jmx
 PostmanTest.json
+README.md
 k8s
+hello-service-chart
 node_modules
 npm-debug

@@ -1,0 +1,27 @@
+replicaCount: 2
+
+fullnameOverride: hello-service
+
+image:
+  repository: svkrivonos/hello-service
+  tagName: 1.1
+
+service:
+  type: NodePort
+  port: 8000
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  host: arch.homework
+  path: /otusapp/svkrivonos/(.*)
+  rewrite: /$1
+
+postgresql:
+  enabled: true
+  postgresqlFullname: postgres
+  postgresqlUsername: myuser
+  postgresqlPassword: passwd
+  postgresqlDatabase: myapp
+  service:
+    port: "5432"

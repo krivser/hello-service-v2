@@ -13,6 +13,8 @@ app.get('/', function(request, response) {
 app.get('/config', function(request, response) {
     
 	var connectionInfo = {
+		greeting : process.env.GREETING,
+		url : process.env.DATABASE_URI,
 		host : process.env.POSTGRES_HOST,
 		port : process.env.POSTGRES_PORT,
 		user : process.env.POSTGRES_USER,
