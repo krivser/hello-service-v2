@@ -28,7 +28,7 @@ spec:
           image: postgres:12.3
           env:
             - name: POSTGRES_HOST
-              value: {{ include "postgresql.fullname" . | quote }}
+              value: {{ .Values.postgresql.postgresqlFullname | quote }}
             - name: POSTGRES_PORT
               value: {{ .Values.postgresql.service.port | quote }}
           command:
@@ -41,7 +41,7 @@ spec:
       - name: post-install-job
         env:
           - name: DATABASE_URI
-            value: {{ printf "postgresql://%s:%s@%s:%s/%s" .Values.postgresql.postgresqlUsername .Values.postgresql.postgresqlPassword (include "postgresql.fullname" .) .Values.postgresql.service.port .Values.postgresql.postgresqlDatabase  | quote }}
+            value: {{ printf "postgresql://%s:%s@%s:%s/%s" .Values.postgresql.postgresqlUsername .Values.postgresql.postgresqlPassword .Values.postgresql.postgresqlFullname .Values.postgresql.service.port .Values.postgresql.postgresqlDatabase  | quote }}
         image: postgres:12.3
         command:
           - sh
