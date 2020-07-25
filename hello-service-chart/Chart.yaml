@@ -7,10 +7,10 @@ type: application
 version: 0.1.0
 appVersion: 1.16.0
 
-# dependencies:
-  # - name: postgresql
-    # version: 9.x.x
-    # repository: https://charts.bitnami.com/bitnami
-    # condition: postgresql.enabled
-    # tags:
-      # - myapp-database
+dependencies:
+  - name: postgresql
+    version: 9.x.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+    tags:
+      - myapp-database

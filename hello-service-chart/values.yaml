@@ -24,4 +24,5 @@ postgresql:
   postgresqlPassword: passwd
   postgresqlDatabase: myapp
   service:
+    type: NodePort
     port: "5432"
