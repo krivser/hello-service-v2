@@ -19,7 +19,6 @@ ingress:
 
 postgresql:
   enabled: true
-  postgresqlFullname: postgres
   postgresqlUsername: myuser
   postgresqlPassword: passwd
   postgresqlDatabase: myapp
